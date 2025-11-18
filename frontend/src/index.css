@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+}
+
 @property --border-angle {
   inherits: false;
   initial-value: 0deg;
