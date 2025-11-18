@@ -16,13 +16,15 @@ export const arcjetProtection = async (req, res, next) => {
         });
       }
     }
-    if(decision.result.some(isSpoofedBot)){
 
-        return res.status(403).json({
-            error:"Spoofed bot detected",
-            message:"Malicious bot activity detected.",
-        })
+    // check for spoofed bots
+    if (decision.results.some(isSpoofedBot)) {
+      return res.status(403).json({
+        error: "Spoofed bot detected",
+        message: "Malicious bot activity detected.",
+      });
     }
+
     next();
   } catch (error) {
     console.log("Arcjet Protection Error:", error);
