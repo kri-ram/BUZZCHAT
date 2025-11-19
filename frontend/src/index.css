@@ -2,10 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
-html, body, #root {
+/* === UNIVERSAL NO-SCROLL FULLSCREEN AUTH LAYOUT === */
+
+/* Fix body so there is no scroll */
+html,
+body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* ❗ No scroll anywhere */
+}
+
+/* This class wraps your entire auth card (signup/login) */
+.auth-page {
+  height: 100vh; /* Always full screen height */
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   overflow: hidden;
 }
+
+/* Inside card container */
+.auth-card {
+  height: 100%;
+  width: 100%;
+  max-width: 1300px; /* your design width (adjust if needed) */
+  display: flex;
+  overflow: hidden;
+  transform-origin: center top;
+}
+
+/* === AUTO SCALE DOWN IF SCREEN IS SHORT === */
+@media (max-height: 850px) {
+  .auth-card {
+    transform: scale(0.95);
+  }
+}
+
+@media (max-height: 780px) {
+  .auth-card {
+    transform: scale(0.88);
+  }
+}
+
+@media (max-height: 700px) {
+  .auth-card {
+    transform: scale(0.82);
+  }
+}
+
+@media (max-height: 620px) {
+  .auth-card {
+    transform: scale(0.75);
+  }
+}
+
 
 @property --border-angle {
   inherits: false;
